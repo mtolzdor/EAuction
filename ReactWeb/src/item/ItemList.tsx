@@ -14,15 +14,31 @@ const ItemList = () => {
     fetchItems();
   }, []);
   return (
-    <>
-      {items.map((item: any) => (
-        <div key={item.id}>
-          <h2>{item.name}</h2>
-          <p>{item.description}</p>
-          <p>Price: ${item.price}</p>
-        </div>
-      ))}
-    </>
+    <div>
+      <div className="row mb-2">
+        <h5 className="themeFontColor text-center">Items for sale</h5>
+      </div>
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item: any) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.description}</td>
+              <td>{item.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
