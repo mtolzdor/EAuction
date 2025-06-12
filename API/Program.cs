@@ -32,4 +32,14 @@ app.MapGet("/items", async (IItemRepository repo) =>
     return Results.Ok(items);
 }).Produces<ItemDto[]>(StatusCodes.Status200OK);
 
+app.MapGet("/item/{itemId:int}", async (int itemId, IItemRepository repo) =>
+{
+    var item = await repo.GetItemById(itemId);
+    if (item == null)
+    {
+        return Results.Problem($"Item with ID {itemId} not found.", statusCode: 404);
+    }
+    return Results.Ok(item);
+}).ProducesProblem(404).Produces<ItemDetailDto>(StatusCodes.Status200OK);
+
 app.Run();

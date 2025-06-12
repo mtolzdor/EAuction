@@ -22,9 +22,14 @@ namespace API.Data
             throw new NotImplementedException();
         }
 
-        public Task<ItemEntity?> GetItemById(int id)
+        public async Task<ItemDetailDto?> GetItemById(int id)
         {
-            throw new NotImplementedException();
+            var itemEntity = await _context.Items.SingleOrDefaultAsync(i => i.Id == id);
+            if (itemEntity == null)
+            {
+                return null;
+            }
+            return new ItemDetailDto(itemEntity.Id, itemEntity.Name, itemEntity.Description, itemEntity.Price, itemEntity.ImageUrl);
         }
 
         public async Task<List<ItemDto>> GetItems()

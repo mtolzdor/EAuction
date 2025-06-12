@@ -11,4 +11,14 @@ const useFetchItems = () => {
   });
 };
 
-export { useFetchItems };
+const useFetchItem = (id: number) => {
+  return useQuery<Item, AxiosError>({
+    queryKey: ["item", id],
+    queryFn: () =>
+      axios
+        .get(`${config.baseApiUrl}/item/${id}`)
+        .then((response) => response.data),
+  });
+};
+
+export { useFetchItems, useFetchItem };

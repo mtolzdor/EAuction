@@ -1,7 +1,9 @@
 import type { Item } from "../types/Item";
 import { useFetchItems } from "../hooks/ItemHook";
+import { useNavigate } from "react-router";
 
 const ItemList = () => {
+  const nav = useNavigate();
   const { data, isPending } = useFetchItems();
 
   if (isPending) return <h2>Loading...</h2>;
@@ -23,7 +25,7 @@ const ItemList = () => {
         <tbody>
           {data &&
             data.map((item: Item) => (
-              <tr key={item.id}>
+              <tr key={item.id} onClick={() => nav(`/house/${item.id}`)}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
