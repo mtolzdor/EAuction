@@ -1,6 +1,6 @@
 import type { Item } from "../types/Item";
 import { useFetchItems } from "../hooks/ItemHook";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const ItemList = () => {
   const nav = useNavigate();
@@ -25,7 +25,7 @@ const ItemList = () => {
         <tbody>
           {data &&
             data.map((item: Item) => (
-              <tr key={item.id} onClick={() => nav(`/house/${item.id}`)}>
+              <tr key={item.id} onClick={() => nav(`/item/${item.id}`)}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
@@ -40,6 +40,9 @@ const ItemList = () => {
             ))}
         </tbody>
       </table>
+      <Link className="btn btn-primary" to="/item/add">
+        Add
+      </Link>
     </div>
   );
 };
