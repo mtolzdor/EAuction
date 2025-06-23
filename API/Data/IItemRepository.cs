@@ -6,7 +6,7 @@ namespace API.Data
     {
         Task<List<ItemDto>> GetItems();
         Task<ItemDetailDto?> GetItemById(int id);
-        Task<ItemEntity> AddItem(ItemEntity item);
+        Task<ItemDetailDto> AddItem(ItemDetailDto dto);
         Task<ItemEntity> UpdateItem(ItemEntity item);
         Task DeleteItem(int id);
 

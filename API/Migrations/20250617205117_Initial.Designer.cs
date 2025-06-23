@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250610192002_Initial")]
+    [Migration("20250617205117_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -47,7 +47,6 @@ namespace API.Migrations
                         {
                             Id = 1,
                             Description = "Latest model with high-resolution display.",
-                            ImageUrl = "https://example.com/images/smartphone.jpg",
                             Name = "Smartphone",
                             Price = 799.99m
                         },
@@ -55,7 +54,6 @@ namespace API.Migrations
                         {
                             Id = 2,
                             Description = "Portable speaker with deep bass.",
-                            ImageUrl = "https://example.com/images/speaker.jpg",
                             Name = "Bluetooth Speaker",
                             Price = 59.99m
                         },
@@ -63,7 +61,6 @@ namespace API.Migrations
                         {
                             Id = 3,
                             Description = "27-inch 144Hz gaming monitor.",
-                            ImageUrl = "https://example.com/images/monitor.jpg",
                             Name = "Gaming Monitor",
                             Price = 299.99m
                         },
@@ -71,7 +68,6 @@ namespace API.Migrations
                         {
                             Id = 4,
                             Description = "Multiport adapter for laptops.",
-                            ImageUrl = "https://example.com/images/hub.jpg",
                             Name = "USB-C Hub",
                             Price = 39.99m
                         },
@@ -79,7 +75,6 @@ namespace API.Migrations
                         {
                             Id = 5,
                             Description = "Over-ear headphones with active noise cancellation.",
-                            ImageUrl = "https://example.com/images/headphones.jpg",
                             Name = "Noise Cancelling Headphones",
                             Price = 199.99m
                         });

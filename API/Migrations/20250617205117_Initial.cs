@@ -33,11 +33,11 @@ namespace API.Migrations
                 columns: new[] { "Id", "Description", "ImageUrl", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Latest model with high-resolution display.", "https://example.com/images/smartphone.jpg", "Smartphone", 799.99m },
-                    { 2, "Portable speaker with deep bass.", "https://example.com/images/speaker.jpg", "Bluetooth Speaker", 59.99m },
-                    { 3, "27-inch 144Hz gaming monitor.", "https://example.com/images/monitor.jpg", "Gaming Monitor", 299.99m },
-                    { 4, "Multiport adapter for laptops.", "https://example.com/images/hub.jpg", "USB-C Hub", 39.99m },
-                    { 5, "Over-ear headphones with active noise cancellation.", "https://example.com/images/headphones.jpg", "Noise Cancelling Headphones", 199.99m }
+                    { 1, "Latest model with high-resolution display.", null, "Smartphone", 799.99m },
+                    { 2, "Portable speaker with deep bass.", null, "Bluetooth Speaker", 59.99m },
+                    { 3, "27-inch 144Hz gaming monitor.", null, "Gaming Monitor", 299.99m },
+                    { 4, "Multiport adapter for laptops.", null, "USB-C Hub", 39.99m },
+                    { 5, "Over-ear headphones with active noise cancellation.", null, "Noise Cancelling Headphones", 199.99m }
                 });
         }
 

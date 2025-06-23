@@ -14,7 +14,6 @@ namespace API.Data
                     Name = "Smartphone",
                     Description = "Latest model with high-resolution display.",
                     Price = 799.99m,
-                    ImageUrl = "https://example.com/images/smartphone.jpg"
                 },
                 new ItemEntity
                 {
@@ -22,7 +21,6 @@ namespace API.Data
                     Name = "Bluetooth Speaker",
                     Description = "Portable speaker with deep bass.",
                     Price = 59.99m,
-                    ImageUrl = "https://example.com/images/speaker.jpg"
                 },
                 new ItemEntity
                 {
@@ -30,7 +28,6 @@ namespace API.Data
                     Name = "Gaming Monitor",
                     Description = "27-inch 144Hz gaming monitor.",
                     Price = 299.99m,
-                    ImageUrl = "https://example.com/images/monitor.jpg"
                 },
                 new ItemEntity
                 {
@@ -38,7 +35,6 @@ namespace API.Data
                     Name = "USB-C Hub",
                     Description = "Multiport adapter for laptops.",
                     Price = 39.99m,
-                    ImageUrl = "https://example.com/images/hub.jpg"
                 },
                 new ItemEntity
                 {
@@ -46,7 +42,6 @@ namespace API.Data
                     Name = "Noise Cancelling Headphones",
                     Description = "Over-ear headphones with active noise cancellation.",
                     Price = 199.99m,
-                    ImageUrl = "https://example.com/images/headphones.jpg"
                 }
             });
         }

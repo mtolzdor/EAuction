@@ -42,4 +42,10 @@ app.MapGet("/item/{itemId:int}", async (int itemId, IItemRepository repo) =>
     return Results.Ok(item);
 }).ProducesProblem(404).Produces<ItemDetailDto>(StatusCodes.Status200OK);
 
+app.MapPost("/items", async (ItemDetailDto dto, IItemRepository repo) =>
+{
+    var item = await repo.AddItem(dto);
+    return Results.Created($"/item/{item.Id}", item);
+}).Produces<ItemDetailDto>(StatusCodes.Status201Created);
+
 app.Run();

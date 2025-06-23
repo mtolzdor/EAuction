@@ -16,7 +16,7 @@ const ItemDetail = () => {
     <div className="row">
       <div className="col-6">
         <div className="row">
-          <img className="img-fluid" alt="coming soon..."></img>
+          <img className="img-fluid" src={data.imageUrl}></img>
         </div>
       </div>
       <div className="col-6">
