@@ -1,7 +1,8 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, type AxiosResponse } from "axios";
 import config from "../config";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Item } from "../types/Item";
+import { useNavigate } from "react-router";
 
 const useFetchItems = () => {
   return useQuery<Item[], AxiosError>({
@@ -21,4 +22,16 @@ const useFetchItem = (id: number) => {
   });
 };
 
-export { useFetchItems, useFetchItem };
+const useAddItem = () => {
+  const queryClient = useQueryClient();
+  const nav = useNavigate();
+  return useMutation<AxiosResponse, AxiosError, Item>({
+    mutationFn: (i) => axios.post(`${config.baseApiUrl}/items`, i),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["items"] });
+      nav("/");
+    },
+  });
+};
+
+export { useFetchItems, useFetchItem, useAddItem };
