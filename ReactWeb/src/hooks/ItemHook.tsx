@@ -34,4 +34,34 @@ const useAddItem = () => {
   });
 };
 
-export { useFetchItems, useFetchItem, useAddItem };
+const useUpdateItem = () => {
+  const queryClient = useQueryClient();
+  const nav = useNavigate();
+  return useMutation<AxiosResponse, AxiosError, Item>({
+    mutationFn: (i) => axios.put(`${config.baseApiUrl}/items`, i),
+    onSuccess: (_, item) => {
+      queryClient.invalidateQueries({ queryKey: ["items"] });
+      nav(`/item/${item.id}`);
+    },
+  });
+};
+
+const useDeleteItem = () => {
+  const queryClient = useQueryClient();
+  const nav = useNavigate();
+  return useMutation<AxiosResponse, AxiosError, Item>({
+    mutationFn: (i) => axios.delete(`${config.baseApiUrl}/items/${i.id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["items"] });
+      nav("/");
+    },
+  });
+};
+
+export {
+  useFetchItems,
+  useFetchItem,
+  useAddItem,
+  useUpdateItem,
+  useDeleteItem,
+};

@@ -37,14 +37,23 @@ namespace API.Data
 
         }
 
-        public Task DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            throw new NotImplementedException();
+            var item = await _context.Items.FindAsync(id);
+
+            if (item == null)
+            {
+                throw new ArgumentException($"Item with ID {id} not found.");
+            }
+
+            _context.Items.Remove(item);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<ItemDetailDto?> GetItemById(int id)
         {
             var item = await _context.Items.SingleOrDefaultAsync(i => i.Id == id);
+
             if (item == null)
             {
                 return null;
@@ -57,9 +66,19 @@ namespace API.Data
             return await _context.Items.Select(i => new ItemDto(i.Id, i.Name, i.Price, i.ImageUrl)).ToListAsync();
         }
 
-        public Task<ItemEntity> UpdateItem(ItemEntity item)
+        public async Task<ItemDetailDto> UpdateItem(ItemDetailDto dto)
         {
-            throw new NotImplementedException();
+            var item = await _context.Items.FindAsync(dto.Id);
+
+            if (item == null)
+            {
+                throw new ArgumentException($"Item with ID {dto.Id} not found.");
+            }
+
+            DtoToEntity(dto, item);
+            _context.Entry(item).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return EntityToDetailDto(item);
         }
     }
 }

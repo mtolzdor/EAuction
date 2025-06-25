@@ -48,4 +48,24 @@ app.MapPost("/items", async (ItemDetailDto dto, IItemRepository repo) =>
     return Results.Created($"/item/{item.Id}", item);
 }).Produces<ItemDetailDto>(StatusCodes.Status201Created);
 
+app.MapPut("/items", async (ItemDetailDto dto, IItemRepository repo) =>
+{
+    if (await repo.GetItemById(dto.Id) == null)
+    {
+        return Results.Problem($"Item with ID {dto.Id} not found.", statusCode: 404);
+    }
+    var item = await repo.UpdateItem(dto);
+    return Results.Ok(item);
+}).ProducesProblem(404).Produces<ItemDetailDto>(StatusCodes.Status200OK);
+
+app.MapDelete("/item/{itemId:int}", async (int itemId, IItemRepository repo) =>
+{
+    if (await repo.GetItemById(itemId) == null)
+    {
+        return Results.Problem($"Item with ID {itemId} not found.", statusCode: 404);
+    }
+    await repo.DeleteItem(itemId);
+    return Results.Ok();
+}).ProducesProblem(404).Produces(StatusCodes.Status200OK);
+
 app.Run();
