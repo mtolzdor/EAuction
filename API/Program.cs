@@ -58,7 +58,7 @@ app.MapPut("/items", async (ItemDetailDto dto, IItemRepository repo) =>
     return Results.Ok(item);
 }).ProducesProblem(404).Produces<ItemDetailDto>(StatusCodes.Status200OK);
 
-app.MapDelete("/item/{itemId:int}", async (int itemId, IItemRepository repo) =>
+app.MapDelete("/items/{itemId:int}", async (int itemId, IItemRepository repo) =>
 {
     if (await repo.GetItemById(itemId) == null)
     {
