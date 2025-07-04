@@ -1,3 +1,8 @@
 tr {
   cursor: pointer;
 }
+
+.img-small {
+  width: 120px;
+  height: 120px;
+}

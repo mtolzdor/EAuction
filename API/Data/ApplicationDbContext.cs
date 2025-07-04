@@ -10,6 +10,7 @@ namespace API.Data
 
         }
         public DbSet<ItemEntity> Items => Set<ItemEntity>();
+        public DbSet<BidEntity> Bids => Set<BidEntity>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

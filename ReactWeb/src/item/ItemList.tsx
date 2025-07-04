@@ -1,6 +1,7 @@
 import type { Item } from "../types/Item";
 import { useFetchItems } from "../hooks/ItemHook";
 import { Link, useNavigate } from "react-router";
+import { currencyFormatter } from "../config";
 
 const ItemList = () => {
   const nav = useNavigate();
@@ -17,9 +18,9 @@ const ItemList = () => {
         <thead>
           <tr>
             <th>Id</th>
+            <th></th>
             <th>Name</th>
             <th>Price</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -27,15 +28,15 @@ const ItemList = () => {
             data.map((item: Item) => (
               <tr key={item.id} onClick={() => nav(`/item/${item.id}`)}>
                 <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
                 <td>
                   <img
-                    className="img-thumbnail"
+                    className="img-thumbnail img-small"
                     src={item.imageUrl}
                     alt="coming soon..."
                   ></img>
                 </td>
+                <td>{item.name}</td>
+                <td>{currencyFormatter.format(item.price)}</td>
               </tr>
             ))}
         </tbody>
