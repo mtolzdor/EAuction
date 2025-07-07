@@ -1,6 +1,6 @@
 namespace API.Data
 {
-    public class BidEntity    
+    public class BidEntity
     {
         public int Id { get; set; }
         public int ItemId { get; set; }

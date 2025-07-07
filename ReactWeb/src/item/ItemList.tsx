@@ -1,5 +1,5 @@
 import type { Item } from "../types/Item";
-import { useFetchItems } from "../hooks/ItemHook";
+import { useFetchItems } from "../hooks/ItemHooks";
 import { Link, useNavigate } from "react-router";
 import { currencyFormatter } from "../config";
 

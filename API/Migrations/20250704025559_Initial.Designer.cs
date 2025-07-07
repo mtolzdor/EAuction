@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250617205117_Initial")]
+    [Migration("20250704025559_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -18,6 +18,59 @@ namespace API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
+
+            modelBuilder.Entity("API.Data.BidEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BidderName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Bids");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 810.00m,
+                            BidderName = "Alice",
+                            ItemId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 820.00m,
+                            BidderName = "Bob",
+                            ItemId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 65.00m,
+                            BidderName = "Charlie",
+                            ItemId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 320.00m,
+                            BidderName = "Diana",
+                            ItemId = 3
+                        });
+                });
 
             modelBuilder.Entity("API.Data.ItemEntity", b =>
                 {
@@ -78,6 +131,17 @@ namespace API.Migrations
                             Name = "Noise Cancelling Headphones",
                             Price = 199.99m
                         });
+                });
+
+            modelBuilder.Entity("API.Data.BidEntity", b =>
+                {
+                    b.HasOne("API.Data.ItemEntity", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
                 });
 #pragma warning restore 612, 618
         }

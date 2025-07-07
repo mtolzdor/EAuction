@@ -44,6 +44,36 @@ namespace API.Data
                     Price = 199.99m,
                 }
             });
+            builder.Entity<BidEntity>().HasData(new List<BidEntity> {
+                new BidEntity
+                {
+                    Id = 1,
+                    ItemId = 1,
+                    BidderName = "Alice",
+                    Amount = 810.00m
+                },
+                 new BidEntity
+                {
+                    Id = 2,
+                    ItemId = 1,
+                    BidderName = "Bob",
+                    Amount = 820.00m
+                },
+                 new BidEntity
+                {
+                    Id = 3,
+                    ItemId = 2,
+                    BidderName = "Charlie",
+                    Amount = 65.00m
+                },
+                   new BidEntity
+                {
+                    Id = 4,
+                    ItemId = 3,
+                    BidderName = "Diana",
+                    Amount = 320.00m
+                }
+            });
         }
     }
 

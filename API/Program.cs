@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
-
+builder.Services.AddScoped<IBidRepository, BidRepository>();
 
 var app = builder.Build();
 
@@ -66,6 +66,16 @@ app.MapDelete("/items/{itemId:int}", async (int itemId, IItemRepository repo) =>
     }
     await repo.DeleteItem(itemId);
     return Results.Ok();
+}).ProducesProblem(404).Produces(StatusCodes.Status200OK);
+
+app.MapGet("/items/{itemId:int}/bids", async (int itemId, IItemRepository itemRepo, IBidRepository bidRepo) =>
+{
+    if (await itemRepo.GetItemById(itemId) == null)
+    {
+        return Results.Problem($"Item with ID {itemId} not found.", statusCode: 404);
+    }
+    var bids = await bidRepo.GetBids(itemId);
+    return Results.Ok(bids);
 }).ProducesProblem(404).Produces(StatusCodes.Status200OK);
 
 app.Run();

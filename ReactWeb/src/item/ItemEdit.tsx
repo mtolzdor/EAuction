@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useFetchItem, useUpdateItem } from "../hooks/ItemHook";
+import { useFetchItem, useUpdateItem } from "../hooks/ItemHooks";
 import ItemForm from "./ItemForm";
 
 const ItemEdit = () => {

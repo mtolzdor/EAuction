@@ -1,4 +1,4 @@
-import { useDeleteItem, useFetchItem } from "../hooks/ItemHook";
+import { useDeleteItem, useFetchItem } from "../hooks/ItemHooks";
 import { Link, useParams } from "react-router";
 
 const ItemDetail = () => {

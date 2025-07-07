@@ -12,10 +12,7 @@ namespace API.Data
         }
         public async Task<List<BidDto>> GetBids(int itemId)
         {
-            return await _context.Bids
-                .Where(b => b.ItemId == itemId)
-                .Select(b => new BidDto(b.Id, b.ItemId, b.BidderName, b.Amount))
-                .ToListAsync();
+            return await _context.Bids.Where(b => b.ItemId == itemId).Select(b => new BidDto(b.Id, b.ItemId, b.BidderName, b.Amount)).ToListAsync();
         }
         public async Task<BidDto> AddBid(BidDto dto)
         {
