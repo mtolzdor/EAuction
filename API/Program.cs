@@ -78,4 +78,14 @@ app.MapGet("/items/{itemId:int}/bids", async (int itemId, IItemRepository itemRe
     return Results.Ok(bids);
 }).ProducesProblem(404).Produces(StatusCodes.Status200OK);
 
+app.MapPost("/item/{itemId:int}/bids", async (int itemId, BidDto dto, IBidRepository repo) =>
+{
+    if (dto.ItemId != itemId)
+    {
+        return Results.Problem("Id mismatch", statusCode: StatusCodes.Status400BadRequest);
+    }
+    var bid = await repo.AddBid(dto);
+    return Results.Created($"/items/{bid.ItemId}/bids", bid);
+}).ProducesProblem(400).Produces<BidDto>(StatusCodes.Status201Created);
+
 app.Run();
