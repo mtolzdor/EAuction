@@ -1,3 +1,4 @@
+import Bids from "../bids/Bids";
 import { useDeleteItem, useFetchItem } from "../hooks/ItemHooks";
 import { Link, useParams } from "react-router";
 
@@ -51,6 +52,7 @@ const ItemDetail = () => {
         <div className="row">
           <h3 className="col-12 mt-3">{data.description}</h3>
         </div>
+        <Bids item={data} />
       </div>
     </div>
   );

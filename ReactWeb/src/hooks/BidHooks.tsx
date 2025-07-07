@@ -9,7 +9,7 @@ const useFetchBids = (itemId: number) => {
     queryKey: ["bids", itemId],
     queryFn: () =>
       axios
-        .get(`${config.baseApiUrl}/item/${itemId}/bids`)
+        .get(`${config.baseApiUrl}/items/${itemId}/bids`)
         .then((res) => res.data),
   });
 };
