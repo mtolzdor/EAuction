@@ -4,11 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import ItemDetail from "../item/ItemDetail";
 import ItemAdd from "../item/ItemAdd";
 import ItemEdit from "../item/ItemEdit";
+import Header from "./Header";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="container">
+        <Header title="EAuction"></Header>
         <Routes>
           <Route path="/" element={<ItemList />}></Route>
           <Route path="item/:id" element={<ItemDetail />}></Route>

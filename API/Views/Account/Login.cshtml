@@ -13,11 +13,10 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Login" method="post">
-                        @Html.AntiForgeryToken()
                         <div class="mb-1">
-                            <label asp-for="Username" class="form-label">Username</label>
-                            <input asp-for="Username" class="form-control" placeholder="Enter username" autofocus />
-                            <span asp-validation-for="Username" class="text-danger"></span>
+                            <label asp-for="UserName" class="form-label">Username</label>
+                            <input asp-for="UserName" class="form-control" placeholder="Enter username" autofocus />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
                         </div>
                         <div class="mb-1">
                             <label asp-for="Password" class="form-label">Password</label>

@@ -2,12 +2,13 @@ import type { Item } from "../types/Item";
 import { useFetchItems } from "../hooks/ItemHooks";
 import { Link, useNavigate } from "react-router";
 import { currencyFormatter } from "../config";
+import { useFetchUser } from "../hooks/UserHooks";
+import type { Claim } from "../types/Claim";
 
 const ItemList = () => {
   const nav = useNavigate();
-  const { data, isPending } = useFetchItems();
-
-  if (isPending) return <h2>Loading...</h2>;
+  const { data } = useFetchItems();
+  const { data: userClaims } = useFetchUser();
 
   return (
     <div>
@@ -41,9 +42,14 @@ const ItemList = () => {
             ))}
         </tbody>
       </table>
-      <Link className="btn btn-primary" to="/item/add">
-        Add
-      </Link>
+      {userClaims &&
+        userClaims.find(
+          (c: Claim) => c.type === "role" && c.value === "Admin"
+        ) && (
+          <Link className="btn btn-primary" to="/item/add">
+            Add
+          </Link>
+        )}
     </div>
   );
 };

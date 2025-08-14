@@ -19,12 +19,12 @@ namespace API.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginModel());
         }
 
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterModel());
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace API.Controllers
                 return BadRequest("Username and password are required.");
             }
 
-            var user = await _accountRepository.GetUserByCredentials(model.Username, model.Password);
+            var user = await _accountRepository.GetUserByCredentials(model.UserName, model.Password);
 
             if (user == null)
             {
@@ -75,7 +75,7 @@ namespace API.Controllers
                 {
                     return BadRequest("An account with that username or email already exists.");
                 }
-                return RedirectToAction("Login");
+                return Redirect("Login");
 
             }
             return View(model);
