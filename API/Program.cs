@@ -1,9 +1,9 @@
 using API.Data;
-using API.Dtos;
+using API.Models.Dtos;
+using API.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,7 +1,9 @@
-using API.Dtos;
+using API.Data;
+using API.Entities;
+using API.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Data
+namespace API.Repositories
 {
     public class BidRepository : IBidRepository
     {

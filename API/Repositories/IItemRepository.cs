@@ -1,6 +1,6 @@
-﻿using API.Dtos;
+﻿using API.Models.Dtos;
 
-namespace API.Data
+namespace API.Repositories
 {
     public interface IItemRepository
     {

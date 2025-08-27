@@ -1,4 +1,6 @@
-﻿namespace API.Data
+﻿using API.Entities;
+
+namespace API.Repositories
 {
     public interface IAccountRepository
     {

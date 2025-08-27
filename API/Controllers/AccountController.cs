@@ -1,5 +1,5 @@
-﻿using API.Data;
-using API.Models;
+﻿using API.Models.ViewModels;
+using API.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
